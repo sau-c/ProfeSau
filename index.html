@@ -1,0 +1,924 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Profesional | [Tu Nombre]</title>
+    <meta name="description" content="Portafolio profesional de [Tu Nombre], profesor especializado en [tu área] con [X] años de experiencia educativa.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #34495e;
+            --text-light: #7f8c8d;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 50px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+        
+        .card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .skill-badge {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            padding: 8px 15px;
+            border-radius: 30px;
+            margin: 5px;
+            display: inline-block;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-badge:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 20px;
+            height: 100%;
+            width: 2px;
+            background: var(--primary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: -40px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            border: 3px solid white;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 60px;
+            color: rgba(52, 152, 219, 0.1);
+            font-family: serif;
+            line-height: 1;
+        }
+        
+        .contact-form .form-control {
+            border-radius: 0;
+            border: none;
+            border-bottom: 2px solid #ddd;
+            padding-left: 0;
+            padding-right: 0;
+            background: transparent;
+        }
+        
+        .contact-form .form-control:focus {
+            box-shadow: none;
+            border-bottom-color: var(--primary-color);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+        
+        .navbar {
+            transition: all 0.3s ease;
+            padding: 15px 0;
+        }
+        
+        .navbar.scrolled {
+            background-color: white !important;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+        }
+        
+        .navbar.scrolled .nav-link {
+            color: var(--dark-color) !important;
+        }
+        
+        .navbar.scrolled .navbar-brand {
+            color: var(--dark-color) !important;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            padding: 8px 15px !important;
+            margin: 0 5px;
+            position: relative;
+        }
+        
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover::before {
+            width: 100%;
+        }
+        
+        .progress {
+            height: 8px;
+            border-radius: 4px;
+        }
+        
+        .progress-bar {
+            background-color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 100px 0 60px;
+                text-align: center;
+            }
+            
+            .profile-img {
+                width: 150px;
+                height: 150px;
+                margin-bottom: 20px;
+            }
+            
+            .section-title::after {
+                bottom: -10px;
+            }
+        }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="100">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">Prof. <span class="text-primary">[Apellido]</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Sobre mí</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Habilidades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portafolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">Experiencia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content" data-aos="fade-right">
+                    <h6 class="text-uppercase text-white-50 mb-3">Bienvenido a mi portafolio</h6>
+                    <h1 class="display-4 fw-bold mb-4">Hola, soy <span class="text-primary">[Tu Nombre]</span></h1>
+                    <p class="lead mb-4">Profesor de [tu materia] con [X] años de experiencia en educación innovadora y formación de futuras generaciones.</p>
+                    <div class="d-flex mb-4">
+                        <a href="#contact" class="btn btn-primary btn-lg me-3">Contáctame</a>
+                        <a href="#portfolio" class="btn btn-outline-light btn-lg">Ver Trabajos</a>
+                    </div>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-researchgate"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt="[Tu Nombre]" class="profile-img img-fluid rounded-circle">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title">Sobre Mí</h2>
+                    <p class="lead mb-5">Apasionado educador comprometido con la excelencia académica y el desarrollo integral de los estudiantes.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h3 class="mb-4">Mi Filosofía Educativa</h3>
+                    <p>Creo firmemente en un enfoque centrado en el estudiante, donde cada individuo tiene el potencial de alcanzar la grandeza cuando se le proporcionan las herramientas y el entorno adecuados.</p>
+                    <p>Mi metodología combina lo mejor de las prácticas tradicionales con innovaciones pedagógicas basadas en evidencia, creando experiencias de aprendizaje significativas y duraderas.</p>
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="me-3 text-primary">
+                                    <i class="fas fa-chalkboard-teacher fa-2x"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-0">Enseñanza Activa</h5>
+                                    <p class="mb-0 text-muted">Aprendizaje basado en proyectos</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="me-3 text-primary">
+                                    <i class="fas fa-users fa-2x"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-0">Enfoque Colaborativo</h5>
+                                    <p class="mb-0 text-muted">Trabajo en equipo y coevaluación</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="me-3 text-primary">
+                                    <i class="fas fa-flask fa-2x"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-0">Investigación</h5>
+                                    <p class="mb-0 text-muted">Basada en evidencia científica</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="me-3 text-primary">
+                                    <i class="fas fa-heart fa-2x"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-0">Educación Emocional</h5>
+                                    <p class="mb-0 text-muted">Desarrollo integral</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <h3 class="mb-4">Mis Especialidades</h3>
+                    <div class="mb-4">
+                        <h5>Diseño Curricular <span class="float-end">95%</span></h5>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h5>Evaluación Educativa <span class="float-end">90%</span></h5>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h5>Tecnología Educativa <span class="float-end">85%</span></h5>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h5>Investigación Acción <span class="float-end">88%</span></h5>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 88%" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h5>Orientación Educativa <span class="float-end">92%</span></h5>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 92%" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-5">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title">Mis Habilidades</h2>
+                    <p class="lead mb-5">Dominio de diversas competencias pedagógicas, tecnológicas y de investigación.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 mb-4" data-aos="fade-up">
+                    <div class="card h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="icon-box bg-primary bg-opacity-10 text-primary mb-4">
+                                <i class="fas fa-chalkboard fa-3x"></i>
+                            </div>
+                            <h4 class="mb-3">Pedagogía</h4>
+                            <p class="text-muted">Estrategias didácticas innovadoras adaptadas a diversos estilos de aprendizaje y necesidades educativas especiales.</p>
+                            <div class="mt-4">
+                                <span class="skill-badge">Aprendizaje Basado en Proyectos</span>
+                                <span class="skill-badge">Flipped Classroom</span>
+                                <span class="skill-badge">Gamificación</span>
+                                <span class="skill-badge">Aprendizaje Cooperativo</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="icon-box bg-primary bg-opacity-10 text-primary mb-4">
+                                <i class="fas fa-laptop-code fa-3x"></i>
+                            </div>
+                            <h4 class="mb-3">Tecnología Educativa</h4>
+                            <p class="text-muted">Integración efectiva de herramientas digitales para potenciar el proceso de enseñanza-aprendizaje.</p>
+                            <div class="mt-4">
+                                <span class="skill-badge">Plataformas LMS</span>
+                                <span class="skill-badge">Herramientas de Colaboración</span>
+                                <span class="skill-badge">Realidad Aumentada</span>
+                                <span class="skill-badge">Análisis de Datos</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="icon-box bg-primary bg-opacity-10 text-primary mb-4">
+                                <i class="fas fa-book fa-3x"></i>
+                            </div>
+                            <h4 class="mb-3">Contenido Especializado</h4>
+                            <p class="text-muted">Amplio conocimiento en [tu área de especialización] con capacidad para simplificar conceptos complejos.</p>
+                            <div class="mt-4">
+                                <span class="skill-badge">Diseño Curricular</span>
+                                <span class="skill-badge">Materiales Didácticos</span>
+                                <span class="skill-badge">Evaluación Auténtica</span>
+                                <span class="skill-badge">Tutoría Académica</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title">Mi Portafolio</h2>
+                    <p class="lead mb-5">Una selección de mis proyectos, materiales didácticos y logros académicos.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Proyecto 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Diseño de Currículo Innovador</h5>
+                            <p class="card-text">Programa académico para [materia] que integra competencias del siglo XXI y evaluación formativa.</p>
+                            <a href="#" class="btn btn-sm btn-primary">Ver Detalles</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Proyecto 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Investigación Educativa</h5>
+                            <p class="card-text">Estudio sobre el impacto de [metodología] en el rendimiento académico de estudiantes de [nivel].</p>
+                            <a href="#" class="btn btn-sm btn-primary">Ver Detalles</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Proyecto 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Materiales Didácticos Digitales</h5>
+                            <p class="card-text">Colección interactiva de recursos para apoyar el aprendizaje de [tema] en educación media.</p>
+                            <a href="#" class="btn btn-sm btn-primary">Ver Detalles</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Proyecto 4">
+                        <div class="card-body">
+                            <h5 class="card-title">Talleres de Capacitación Docente</h5>
+                            <p class="card-text">Programa de desarrollo profesional para educadores en [área específica].</p>
+                            <a href="#" class="btn btn-sm btn-primary">Ver Detalles</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Proyecto 5">
+                        <div class="card-body">
+                            <h5 class="card-title">Publicaciones Académicas</h5>
+                            <p class="card-text">Artículos y capítulos de libro sobre innovación educativa y prácticas pedagógicas efectivas.</p>
+                            <a href="#" class="btn btn-sm btn-primary">Ver Detalles</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Proyecto 6">
+                        <div class="card-body">
+                            <h5 class="card-title">Proyectos Estudiantiles</h5>
+                            <p class="card-text">Iniciativas destacadas de aprendizaje-servicio y proyectos interdisciplinarios.</p>
+                            <a href="#" class="btn btn-sm btn-primary">Ver Detalles</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="#" class="btn btn-primary">Ver Portafolio Completo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-5">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title">Mi Experiencia</h2>
+                    <p class="lead mb-5">Trayectoria profesional y logros académicos.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h3 class="mb-4">Educación</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h4>Doctorado en Educación</h4>
+                            <h5 class="text-primary">[Universidad] | [Año] - [Año]</h5>
+                            <p>Tesis: "[Título de tu investigación]" dirigida por [Nombre del director].</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>Maestría en [Especialidad]</h4>
+                            <h5 class="text-primary">[Universidad] | [Año] - [Año]</h5>
+                            <p>Enfoque en [área de especialización]. Proyecto final sobre [tema específico].</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>Licenciatura en [Carrera]</h4>
+                            <h5 class="text-primary">[Universidad] | [Año] - [Año]</h5>
+                            <p>Graduado con honores. Tesis: "[Título de tu trabajo de grado]".</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <h3 class="mb-4">Experiencia Laboral</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h4>Profesor Titular</h4>
+                            <h5 class="text-primary">[Institución] | [Año] - Presente</h5>
+                            <p>Responsable de [cursos o áreas]. Lideré [iniciativas o proyectos destacados].</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>Coordinador Académico</h4>
+                            <h5 class="text-primary">[Institución] | [Año] - [Año]</h5>
+                            <p>Diseñé e implementé [programas o reformas curriculares]. Supervisé [número] de docentes.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>Consultor Educativo</h4>
+                            <h5 class="text-primary">[Organización] | [Año] - [Año]</h5>
+                            <p>Asesoré en [proyectos específicos] para [clientes o instituciones].</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title">Testimonios</h2>
+                    <p class="lead mb-5">Lo que dicen colegas, estudiantes y colaboradores.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 mb-4" data-aos="fade-up">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-4">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Testimonio 1" class="rounded-circle me-3" width="60">
+                            <div>
+                                <h5 class="mb-0">Dra. María González</h5>
+                                <p class="text-muted mb-0">Colega Académica</p>
+                            </div>
+                        </div>
+                        <p class="mb-0">"[Tu Nombre] es un profesional excepcional cuyo compromiso con la excelencia educativa es evidente en cada proyecto que emprende. Su capacidad para integrar teoría y práctica es realmente inspiradora."</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-4">
+                            <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="Testimonio 2" class="rounded-circle me-3" width="60">
+                            <div>
+                                <h5 class="mb-0">Juan Pérez</h5>
+                                <p class="text-muted mb-0">Ex-alumno</p>
+                            </div>
+                        </div>
+                        <p class="mb-0">"El profesor [Apellido] transformó mi manera de aprender. Sus clases no solo eran informativas sino verdaderamente transformadoras. Años después, sigo aplicando lo que aprendí con él."</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-4">
+                            <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Testimonio 3" class="rounded-circle me-3" width="60">
+                            <div>
+                                <h5 class="mb-0">Lic. Ana Martínez</h5>
+                                <p class="text-muted mb-0">Directora Escolar</p>
+                            </div>
+                        </div>
+                        <p class="mb-0">"Tuvimos el privilegio de contar con [Tu Nombre] como consultor para nuestro programa de innovación pedagógica. Sus recomendaciones fueron fundamentales para lograr nuestros objetivos."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title">Contáctame</h2>
+                    <p class="lead mb-5">¿Interesado en colaborar o conocer más sobre mi trabajo? Envíame un mensaje.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="mb-4">
+                        <h4 class="mb-3">Información de Contacto</h4>
+                        <p class="mb-4">Estoy disponible para proyectos de consultoría, conferencias, colaboraciones académicas y oportunidades de enseñanza.</p>
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="icon-box bg-primary bg-opacity-10 text-primary me-3">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">Email</h6>
+                                <p class="mb-0">tuemail@dominio.com</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="icon-box bg-primary bg-opacity-10 text-primary me-3">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">Teléfono</h6>
+                                <p class="mb-0">+XX XXX XXX XXXX</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="icon-box bg-primary bg-opacity-10 text-primary me-3">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">Ubicación</h6>
+                                <p class="mb-0">[Ciudad, País]</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-icons">
+                        <a href="#" class="btn btn-outline-primary btn-sm rounded-circle me-2"><i class="fab fa-github"></i></a>
+                        <a href="#" class="btn btn-outline-primary btn-sm rounded-circle me-2"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="btn btn-outline-primary btn-sm rounded-circle me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="btn btn-outline-primary btn-sm rounded-circle me-2"><i class="fab fa-researchgate"></i></a>
+                        <a href="#" class="btn btn-outline-primary btn-sm rounded-circle me-2"><i class="fab fa-google-scholar"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <form class="contact-form">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="name" placeholder="Tu Nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" id="email" placeholder="Tu Email" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="subject" placeholder="Asunto" required>
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" id="message" rows="5" placeholder="Tu Mensaje" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5 class="text-white mb-4">Prof. [Apellido]</h5>
+                    <p>Educador comprometido con la innovación pedagógica y la formación integral de estudiantes.</p>
+                </div>
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5 class="text-white mb-4">Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#home" class="text-white-50">Inicio</a></li>
+                        <li class="mb-2"><a href="#about" class="text-white-50">Sobre Mí</a></li>
+                        <li class="mb-2"><a href="#portfolio" class="text-white-50">Portafolio</a></li>
+                        <li class="mb-2"><a href="#contact" class="text-white-50">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="text-white mb-4">Suscríbete</h5>
+                    <p class="text-white-50 mb-3">Recibe actualizaciones sobre mis proyectos y publicaciones.</p>
+                    <form class="mb-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Tu Email">
+                            <button class="btn btn-primary" type="button">Suscribir</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="my-4 bg-white-10">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0 text-white-50 small">© 2023 [Tu Nombre]. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#" class="text-white-50 me-3 small">Política de Privacidad</a>
+                    <a href="#" class="text-white-50 small">Términos de Servicio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    
+    <script>
+        // Initialize AOS animation
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Back to top button
+        const backToTopButton = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('active');
+            } else {
+                backToTopButton.classList.remove('active');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu when clicking a link
+                    const navbarCollapse = document.querySelector('.navbar-collapse');
+                    if (navbarCollapse.classList.contains('show')) {
+                        const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+                        bsCollapse.hide();
+                    }
+                }
+            });
+        });
+        
+        // Form submission
+        const contactForm = document.querySelector('.contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Here you would typically send the form data to a server
+                // For this example, we'll just show an alert
+                alert('Gracias por tu mensaje. Me pondré en contacto contigo pronto.');
+                this.reset();
+            });
+        }
+    </script>
+</body>
+</html>
